@@ -38,3 +38,5 @@ class Calculator:
     def div(self):
         self.logger.info("Division performed")
         return self.num1 / self.num2
+
+        
