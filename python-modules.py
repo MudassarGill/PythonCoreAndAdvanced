@@ -83,5 +83,11 @@ logger.info('Exist folder or not completed')
 
 
 
+logger.info('Createed file added text on this')
+with open('new_folder/file.txt','w') as f:
+    f.write('Hello World')
+logger.info('Createed file added text on this completed')
+
+
 
 
