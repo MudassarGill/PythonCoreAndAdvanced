@@ -123,3 +123,21 @@
 #     return user
 
 
+
+from fastapi import FastAPI, HTTPException, status, Depends
+from pydantic import BaseModel
+from typing import Optional
+
+
+app=FastAPI()
+
+class UserResponse(BaseModel):
+    name: str
+    email:str
+@app.get('/user',response_model=UserResponse)
+def user_data():
+    return {
+        "name": "Ali",
+        "email": "ali@gmail.com",
+        "password": "123456"
+    }
