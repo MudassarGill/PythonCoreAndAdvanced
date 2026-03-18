@@ -104,20 +104,22 @@
 
 
 
-from fastapi import FastAPI, HTTPException, status, Depends
-from pydantic import BaseModel
+# from fastapi import FastAPI, HTTPException, status, Depends
+# from pydantic import BaseModel,Field,Emailstr
+# from typing import Optional
 
-app=FastAPI()
+
+# app=FastAPI()
 
 
-class Users(BaseModel):
-    name: str
-    age: int
-    email: str
-    password: int
+# class Users(BaseModel):
+#     name: str=Field(...,min_length=3,max_length=50)
+#     age: Optional[int]=Field(None)
+#     email: Emailstr
+#     password: int=Field(...,gt=0,min_length=8,max_length=50)
 
-@app.post('/create-user/')
-def create_user(user: Users):
-    return user
+# @app.post('/create-user/')
+# def create_user(user: Users):
+#     return user
 
 
