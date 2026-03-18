@@ -145,27 +145,54 @@
 
 
 
-from fastapi import FastAPI,Form,HTTPException,status
+# from fastapi import FastAPI,Form,HTTPException,status
 
-app=FastAPI()
+# app=FastAPI()
 
-@app.post('/login')
-def login(username:str=Form(...),password:str=Form(...)):
-    if username=="admin" and password=="admin":
-        return {
-            "username": username,
-            "password": password
-    }
-    else:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid username or password"
-        )
+# @app.post('/login')
+# def login(username:str=Form(...),password:str=Form(...)):
+#     if username=="admin" and password=="admin":
+#         return {
+#             "username": username,
+#             "password": password
+#     }
+#     else:
+#         raise HTTPException(
+#             status_code=status.HTTP_401_UNAUTHORIZED,
+#             detail="Invalid username or password"
+#         )
 
-from typing import Optional
 
-app = FastAPI()
 
-@app.post("/login")
-def login(username: str = Form(...), remember_me: Optional[bool] = Form(False)):
-    return {"username": username, "remember_me": remember_me}
+# app = FastAPI()
+
+# @app.post("/login")
+# def login(username: str = Form(...), remember_me: Optional[bool] = Form(False)):
+#     return {"username": username, "remember_me": remember_me}
+
+
+
+
+
+
+# from fastapi import FastAPI,File,UploadFile
+
+# app=FastAPI()
+
+# @app.post('/uploadfile/')
+# def uploadfile(file:UploadFile=File(...)):
+#     return {
+#         "filename": file.filename,
+#         "content_type": file.content_type
+#     }
+
+
+# @app.post('/uploadfile')
+# async def uploadfile(file:UploadFile=File(...)):
+#     content=await file.read()
+#     size=len(content)
+#     return {
+#         "filename": file.filename,
+#         "content_type": file.content_type,
+#         "size": size
+#     }
