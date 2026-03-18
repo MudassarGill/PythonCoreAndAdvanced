@@ -124,20 +124,48 @@
 
 
 
-from fastapi import FastAPI, HTTPException, status, Depends
-from pydantic import BaseModel
-from typing import Optional
+# from fastapi import FastAPI, HTTPException, status, Depends
+# from pydantic import BaseModel
+# from typing import Optional
 
+
+# app=FastAPI()
+
+# class UserResponse(BaseModel):
+#     name: str
+#     email:str
+# @app.get('/user',response_model=UserResponse)
+# def user_data():
+#     return {
+#         "name": "Ali",
+#         "email": "ali@gmail.com",
+#         "password": "123456"
+#     }
+
+
+
+
+from fastapi import FastAPI,Form,HTTPException,status
 
 app=FastAPI()
 
-class UserResponse(BaseModel):
-    name: str
-    email:str
-@app.get('/user',response_model=UserResponse)
-def user_data():
-    return {
-        "name": "Ali",
-        "email": "ali@gmail.com",
-        "password": "123456"
+@app.post('/login')
+def login(username:str=Form(...),password:str=Form(...)):
+    if username=="admin" and password=="admin":
+        return {
+            "username": username,
+            "password": password
     }
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid username or password"
+        )
+
+from typing import Optional
+
+app = FastAPI()
+
+@app.post("/login")
+def login(username: str = Form(...), remember_me: Optional[bool] = Form(False)):
+    return {"username": username, "remember_me": remember_me}
