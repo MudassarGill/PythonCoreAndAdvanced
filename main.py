@@ -1,20 +1,20 @@
-from fastapi import FastAPI, HTTPException,status,Depends
-from pydantic import BaseModel
-import logging
+# from fastapi import FastAPI, HTTPException,status,Depends
+# from pydantic import BaseModel
+# import logging
 
-# Logging setup
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-file_handler = logging.FileHandler('fastapi.log')
-file_handler.setLevel(logging.INFO)
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-file_handler.setFormatter(formatter)
-console_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
-logger.addHandler(console_handler)
+# # Logging setup
+# logging.basicConfig(level=logging.INFO)
+# logger = logging.getLogger(__name__)
+# logger.setLevel(logging.INFO)
+# file_handler = logging.FileHandler('fastapi.log')
+# file_handler.setLevel(logging.INFO)
+# console_handler = logging.StreamHandler()
+# console_handler.setLevel(logging.INFO)
+# formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# file_handler.setFormatter(formatter)
+# console_handler.setFormatter(formatter)
+# logger.addHandler(file_handler)
+# logger.addHandler(console_handler)
 
 # FastAPI app
 # app = FastAPI()
@@ -101,3 +101,23 @@ logger.addHandler(console_handler)
 # @app.post("/cart/")
 # def add_to_cart(token: int = Depends(verify_token)):
 #     return {"message": "Item added to cart", "user_token": token}
+
+
+
+from fastapi import FastAPI, HTTPException, status, Depends
+from pydantic import BaseModel
+
+app=FastAPI()
+
+
+class Users(BaseModel):
+    name: str
+    age: int
+    email: str
+    password: int
+
+@app.post('/create-user/')
+def create_user(user: Users):
+    return user
+
+
